@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FOREST RESOM</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    color: #222;
+    background: #fff;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 82px;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 60px;
+
+    color: #fff;
+
+    transition: all .4s;
+}
+
+.header.scrolled {
+    background: rgba(255,255,255,.97);
+    color: #263c32;
+    box-shadow: 0 1px 15px rgba(0,0,0,.08);
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    display: block;
+    font-family: "Noto Sans KR";
+    font-size: 8px;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-top: -3px;
+}
+
+.nav {
+    display: flex;
+    gap: 42px;
+}
+
+.nav a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: .5px;
+}
+
+.nav a:hover {
+    opacity: .6;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.reserve-btn {
+    border: 1px solid rgba(255,255,255,.7);
+    padding: 11px 22px;
+    font-size: 12px;
+}
+
+.header.scrolled .reserve-btn {
+    border-color: #30483d;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+
+    background:
+        linear-gradient(
+            rgba(15,35,26,.15),
+            rgba(15,35,26,.38)
+        ),
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2200&q=90")
+        center center / cover no-repeat;
+
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.hero-content {
+    margin-top: 60px;
+}
+
+.hero-sub {
+    font-size: 13px;
+    letter-spacing: 5px;
+    margin-bottom: 24px;
+    opacity: .95;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(60px, 8vw, 125px);
+    font-weight: 400;
+    letter-spacing: 5px;
+    line-height: 1;
+}
+
+.hero-desc {
+    margin-top: 32px;
+    font-size: 15px;
+    line-height: 1.9;
+    font-weight: 300;
+}
+
+.scroll {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+.scroll::after {
+    content: "";
+    display: block;
+
+    width: 1px;
+    height: 45px;
+
+    background: rgba(255,255,255,.8);
+
+    margin: 12px auto 0;
+}
+
+
+/* ========================================
+   INTRO
+======================================== */
+
+.intro {
+    padding: 150px 30px;
+    text-align: center;
+    background: #f6f5f0;
+}
+
+.eyebrow {
+    color: #78877d;
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 22px;
+}
+
+.intro h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #30463c;
+    margin-bottom: 28px;
+}
+
+.intro p {
+    font-size: 15px;
+    line-height: 2;
+    color: #666;
+    font-weight: 300;
+}
+
+
+/* ========================================
+   FEATURE
+======================================== */
+
+.feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+}
+
+.feature-image {
+    background:
+        url("https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=85")
+        center / cover no-repeat;
+}
+
+.feature-content {
+    display: flex;
+    align-items: center;
+    padding: 100px;
+    background: #edf0eb;
+}
+
+.feature-inner {
+    max-width: 480px;
+}
+
+.feature-inner h2 {
+    font-size: 42px;
+    font-weight: 400;
+    color: #2d4539;
+    margin-bottom: 25px;
+}
+
+.feature-inner p {
+    font-size: 14px;
+    line-height: 2;
+    color: #666;
+    margin-bottom: 38px;
+}
+
+.more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 25px;
+
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    padding-bottom: 9px;
+
+    border-bottom: 1px solid #52675c;
+}
+
+.more-btn span {
+    font-size: 18px;
+}
+
+
+/* ========================================
+   CONTENT CARDS
+======================================== */
+
+.content-section {
+    padding: 140px 6%;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin-bottom: 55px;
+}
+
+.section-head h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #30463c;
+}
+
+.section-head p {
+    font-size: 13px;
+    color: #888;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    overflow: hidden;
+    background: #f5f5f2;
+}
+
+.card-image {
+    height: 390px;
+    overflow: hidden;
+}
+
+.card-image img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s;
+}
+
+.card:hover .card-image img {
+    transform: scale(1.06);
+}
+
+.card-body {
+    padding: 27px 25px 32px;
+}
+
+.card-category {
+    color: #8a978f;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.card-title {
+    font-size: 19px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #888;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   SPA
+======================================== */
+
+.spa {
+    position: relative;
+
+    min-height: 650px;
+
+    background:
+        linear-gradient(
+            rgba(20,40,30,.2),
+            rgba(20,40,30,.48)
+        ),
+        url("https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2000&q=90")
+        center / cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    text-align: center;
+}
+
+.spa-content {
+    max-width: 700px;
+}
+
+.spa-content .eyebrow {
+    color: #fff;
+}
+
+.spa-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 60px;
+    font-weight: 400;
+}
+
+.spa-content p {
+    margin-top: 25px;
+    font-size: 14px;
+    line-height: 2;
+    font-weight: 300;
+}
+
+.white-btn {
+    display: inline-block;
+    margin-top: 35px;
+
+    border: 1px solid rgba(255,255,255,.8);
+    padding: 13px 30px;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+
+/* ========================================
+   EVENT
+======================================== */
+
+.event {
+    padding: 140px 6%;
+    background: #f5f4ef;
+}
+
+.event-list {
+    border-top: 1px solid #333;
+}
+
+.event-item {
+    display: grid;
+    grid-template-columns: 160px 1fr 180px;
+
+    padding: 28px 10px;
+
+    border-bottom: 1px solid #ddd;
+
+    align-items: center;
+
+    transition: background .3s;
+}
+
+.event-item:hover {
+    background: #ebeae4;
+}
+
+.event-date {
+    font-family: "Playfair Display", serif;
+    color: #7a887f;
+    font-size: 17px;
+}
+
+.event-title {
+    font-size: 16px;
+}
+
+.event-period {
+    text-align: right;
+    font-size: 11px;
+    color: #999;
+}
+
+
+/* ========================================
+   NEWS
+======================================== */
+
+.news {
+    padding: 140px 6%;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 100px;
+}
+
+.news-feature {
+    height: 480px;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=85")
+        center / cover no-repeat;
+}
+
+.news-feature::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        transparent 45%,
+        rgba(0,0,0,.65)
+    );
+}
+
+.news-feature-content {
+    position: absolute;
+    bottom: 35px;
+    left: 35px;
+
+    color: #fff;
+    z-index: 2;
+}
+
+.news-feature-content small {
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.news-feature-content h3 {
+    font-size: 26px;
+    font-weight: 400;
+    margin-top: 12px;
+}
+
+.news-list {
+    border-top: 1px solid #333;
+}
+
+.news-item {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 24px 0;
+
+    border-bottom: 1px solid #ddd;
+
+    gap: 20px;
+}
+
+.news-item a {
+    font-size: 14px;
+}
+
+.news-item span {
+    color: #999;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   LOCATION
+======================================== */
+
+.location {
+    background: #273a31;
+    color: #fff;
+
+    padding: 100px 6%;
+}
+
+.location-inner {
+    max-width: 1200px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 45px;
+    font-weight: 400;
+}
+
+.location p {
+    color: #b9c4bd;
+    font-size: 13px;
+    line-height: 2;
+    margin-top: 15px;
+}
+
+.location-btn {
+    border: 1px solid #87958d;
+    padding: 15px 35px;
+
+    font-size: 11px;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+    background: #1d2b25;
+    color: #8d9a93;
+    padding: 65px 6%;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-logo {
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.footer-info {
+    font-size: 11px;
+    line-height: 2;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 1px solid #38473f;
+
+    margin-top: 35px;
+    padding-top: 25px;
+
+    font-size: 10px;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .header {
+        height: 70px;
+        padding: 0 20px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .header-right .reserve-btn {
+        padding: 8px 13px;
+    }
+
+    .hero {
+        min-height: 650px;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+    }
+
+    .intro {
+        padding: 90px 25px;
+    }
+
+    .intro h2 {
+        font-size: 35px;
+    }
+
+    .feature {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-image {
+        height: 450px;
+    }
+
+    .feature-content {
+        padding: 70px 30px;
+    }
+
+    .feature-inner h2 {
+        font-size: 34px;
+    }
+
+    .content-section,
+    .news,
+    .event {
+        padding: 90px 20px;
+    }
+
+    .section-head {
+        display: block;
+    }
+
+    .section-head h2 {
+        font-size: 38px;
+    }
+
+    .section-head p {
+        margin-top: 10px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card-image {
+        height: 320px;
+    }
+
+    .spa {
+        min-height: 550px;
+    }
+
+    .spa-content h2 {
+        font-size: 43px;
+    }
+
+    .event-item {
+        grid-template-columns: 90px 1fr;
+    }
+
+    .event-period {
+        display: none;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .news-feature {
+        height: 380px;
+    }
+
+    .location-inner {
+        display: block;
+    }
+
+    .location-btn {
+        display: inline-block;
+        margin-top: 30px;
+    }
+
+    .footer-bottom {
+        display: block;
+    }
+
+    .footer-bottom span {
+        display: block;
+        margin-top: 10px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ========================================
+     HEADER
+======================================== -->
+
+<header class="header" id="header">
+
+    <a href="#" class="logo">
+        FOREST
+        <span>RESOM</span>
+    </a>
+
+    <nav class="nav">
+
+        <a href="#about">ABOUT</a>
+        <a href="#room">ROOM</a>
+        <a href="#spa">SPA</a>
+        <a href="#program">PROGRAM</a>
+        <a href="#event">EVENT</a>
+        <a href="#news">NEWS</a>
+
+    </nav>
+
+    <div class="header-right">
+
+        <a href="#" class="reserve-btn">
+            RESERVATION
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ========================================
+     HERO
+======================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-sub">
+            FOREST RESOM
+        </div>
+
+        <h1>
+            INTO THE<br>
+            FOREST
+        </h1>
+
+        <div class="hero-desc">
+            자연과 사람이 함께 쉬어가는 곳<br>
+            숲이 선물하는 가장 깊은 휴식
+        </div>
+
+    </div>
+
+    <div class="scroll">
+        SCROLL DOWN
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     INTRO
+======================================== -->
+
+<section class="intro" id="about">
+
+    <div class="eyebrow">
+        FOREST RESOM
+    </div>
+
+    <h2>
+        자연을 닮은 휴식
+    </h2>
+
+    <p>
+        울창한 숲과 자연 그대로의 지형을 품은<br>
+        포레스트 리솜에서 일상의 속도를 잠시 내려놓으세요.<br>
+        계절의 변화와 숲의 소리를 온전히 느끼며<br>
+        나만의 시간을 경험할 수 있습니다.
+    </p>
+
+</section>
+
+
+<!-- ========================================
+     FEATURE
+======================================== -->
+
+<section class="feature" id="room">
+
+    <div class="feature-image"></div>
+
+    <div class="feature-content">
+
+        <div class="feature-inner">
+
+            <div class="eyebrow">
+                FOREST VILLA
+            </div>
+
+            <h2>
+                숲 속의<br>
+                프라이빗 빌라
+            </h2>
+
+            <p>
+                자연의 지형을 그대로 살린 공간에서
+                숲과 하나 되는 특별한 휴식을 경험하세요.
+                창밖으로 펼쳐지는 계절의 풍경과
+                따뜻한 공간이 편안한 하루를 만들어 줍니다.
+            </p>
+
+            <a href="#" class="more-btn">
+                VIEW ROOMS
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     PROGRAM
+======================================== -->
+
+<section class="content-section" id="program">
+
+    <div class="section-head">
+
+        <div>
+            <div class="eyebrow">
+                SPECIAL EXPERIENCE
+            </div>
+
+            <h2>
+                Forest Life
+            </h2>
+        </div>
+
+        <p>
+            숲에서 만나는 특별한 경험
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <article class="card">
+
+            <div class="card-image">
+                <img
+                    src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=85"
+                    alt="숲속 산책">
+            </div>
+
+            <div class="card-body">
+
+                <div class="card-category">
+                    FOREST
+                </div>
+
+                <h3 class="card-title">
+                    숲 속 산책
+                </h3>
+
+                <p class="card-text">
+                    계절마다 다른 색으로 물드는
+                    숲길을 천천히 걸어보세요.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-image">
+                <img
+                    src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=85"
+                    alt="명상 프로그램">
+            </div>
+
+            <div class="card-body">
+
+                <div class="card-category">
+                    WELLNESS
+                </div>
+
+                <h3 class="card-title">
+                    숲 속 명상
+                </h3>
+
+                <p class="card-text">
+                    자연의 소리에 집중하며
+                    몸과 마음의 균형을 찾아보세요.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-image">
+                <img
+                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85"
+                    alt="자연 속 휴식">
+            </div>
+
+            <div class="card-body">
+
+                <div class="card-category">
+                    HEALING
+                </div>
+
+                <h3 class="card-title">
+                    자연 속 휴식
+                </h3>
+
+                <p class="card-text">
+                    아무것도 하지 않아도 좋은
+                    숲의 시간을 만나보세요.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     SPA
+======================================== -->
+
+<section class="spa" id="spa">
+
+    <div class="spa-content">
+
+        <div class="eyebrow">
+            SPA & WELLNESS
+        </div>
+
+        <h2>
+            Spa in the Forest
+        </h2>
+
+        <p>
+            푸른 숲을 바라보며 즐기는 특별한 스파.<br>
+            자연의 에너지와 함께 몸과 마음을 편안하게 쉬어보세요.
+        </p>
+
+        <a href="#" class="white-btn">
+            VIEW SPA
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     EVENT
+======================================== -->
+
+<section class="event" id="event">
+
+    <div class="section-head">
+
+        <div>
+
+            <div class="eyebrow">
+                FOREST EVENT
+            </div>
+
+            <h2>
+                Event
+            </h2>
+
+        </div>
+
+        <p>
+            포레스트에서 준비한 특별한 이야기
+        </p>
+
+    </div>
+
+
+    <div class="event-list">
+
+        <a href="#" class="event-item">
+
+            <div class="event-date">
+                SEP 24
+            </div>
+
+            <div class="event-title">
+                포레스트 뮤지컬 갈라 콘서트
+            </div>
+
+            <div class="event-period">
+                2026.09.24
+            </div>
+
+        </a>
+
+
+        <a href="#" class="event-item">
+
+            <div class="event-date">
+                SEP 07
+            </div>
+
+            <div class="event-title">
+                행복 가득한 추석을 즐기는 방법
+            </div>
+
+            <div class="event-period">
+                2026.09.07 ~
+            </div>
+
+        </a>
+
+
+        <a href="#" class="event-item">
+
+            <div class="event-date">
+                JUL 03
+            </div>
+
+            <div class="event-title">
+                GRAND OPEN 다람쥐카페
+            </div>
+
+            <div class="event-period">
+                2026.07.03 ~
+            </div>
+
+        </a>
+
+
+        <a href="#" class="event-item">
+
+            <div class="event-date">
+                MAY 01
+            </div>
+
+            <div class="event-title">
+                포레스트 다람쥐 쉼터
+            </div>
+
+            <div class="event-period">
+                2026.05.01 ~
+            </div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     NEWS
+======================================== -->
+
+<section class="news" id="news">
+
+    <div class="section-head">
+
+        <div>
+
+            <div class="eyebrow">
+                FOREST NEWS
+            </div>
+
+            <h2>
+                News
+            </h2>
+
+        </div>
+
+        <a href="#" class="more-btn">
+            VIEW ALL
+            <span>→</span>
+        </a>
+
+    </div>
+
+
+    <div class="news-grid">
+
+        <a href="#" class="news-feature">
+
+            <div class="news-feature-content">
+
+                <small>
+                    FOREST RESOM
+                </small>
+
+                <h3>
+                    자연과 함께하는<br>
+                    새로운 포레스트 이야기
+                </h3>
+
+            </div>
+
+        </a>
+
+
+        <div class="news-list">
+
+            <a href="#" class="news-item">
+
+                <span>
+                    조식 메뉴 개편 및 이용요금 변경 안내
+                </span>
+
+                <span>
+                    2026.09.08
+                </span>
+
+            </a>
+
+
+            <a href="#" class="news-item">
+
+                <span>
+                    유아용 웨건 대여 서비스 안내
+                </span>
+
+                <span>
+                    2026.08.10
+                </span>
+
+            </a>
+
+
+            <a href="#" class="news-item">
+
+                <span>
+                    프리미엄 LA 갈비 세트 출시
+                </span>
+
+                <span>
+                    2026.01.15
+                </span>
+
+            </a>
+
+
+            <a href="#" class="news-item">
+
+                <span>
+                    2025 사진공모전 수상작 발표
+                </span>
+
+                <span>
+                    2026.01.09
+                </span>
+
+            </a>
+
+
+            <a href="#" class="news-item">
+
+                <span>
+                    포레스트 리솜 이용 안내
+                </span>
+
+                <span>
+                    2025.12.12
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     LOCATION
+======================================== -->
+
+<section class="location">
+
+    <div class="location-inner">
+
+        <div>
+
+            <h2>
+                Find Your Forest
+            </h2>
+
+            <p>
+                충청북도 제천시 백운면 금봉로 365<br>
+                FOREST RESOM
+            </p>
+
+        </div>
+
+        <a href="#" class="location-btn">
+            VIEW LOCATION →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     FOOTER
+======================================== -->
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+        <div class="footer-logo">
+            FOREST RESOM
+        </div>
+
+        <div class="footer-info">
+
+            FOREST RESOM<br>
+            충청북도 제천시 백운면 금봉로 365<br>
+            대표번호 : 043-649-6000
+            &nbsp;&nbsp;
+            예약문의 : 1600-0060
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                개인정보처리방침 &nbsp; 이용약관
+            </span>
+
+            <span>
+                © 2026 FOREST RESOM. ALL RIGHTS RESERVED.
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* ========================================
+   HEADER SCROLL
+======================================== */
+
+window.addEventListener("scroll", function() {
+
+    const header = document.getElementById("header");
+
+    if (window.scrollY > 80) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+
+});
+
+
+/* ========================================
+   SIMPLE FADE IN
+======================================== */
+
+const observer = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+
+document.querySelectorAll(
+    ".card, .event-item, .news-feature, .news-item"
+).forEach(el => {
+
+    el.style.opacity = "0";
+    el.style.transform = "translateY(25px)";
+    el.style.transition = "all .7s ease";
+
+    observer.observe(el);
+
+});
+
+</script>
+
+</body>
+</html>

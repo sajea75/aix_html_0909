@@ -1,0 +1,2230 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>FOREST RESORT | 뉴스 글쓰기</title>
+
+
+<!-- GOOGLE FONT -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap"
+      rel="stylesheet">
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family:
+        "Noto Sans KR",
+        sans-serif;
+
+    color: #222;
+
+    background: #fff;
+}
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 85px;
+
+    background: #202722;
+
+    color: #fff;
+}
+
+
+.header-inner {
+
+    max-width: 1450px;
+
+    height: 100%;
+
+    margin: auto;
+
+    padding: 0 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.logo {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 28px;
+
+    letter-spacing: 5px;
+}
+
+
+.nav {
+
+    display: flex;
+
+    gap: 40px;
+}
+
+
+.nav a {
+
+    font-size: 13px;
+
+    font-weight: 300;
+
+    transition: .3s;
+}
+
+
+.nav a:hover {
+
+    opacity: .5;
+}
+
+
+.header-button {
+
+    border:
+        1px solid
+        rgba(255,255,255,.6);
+
+    padding:
+        10px 20px;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   PAGE TITLE
+===================================================== */
+
+.page-title-area {
+
+    background: #f4f3ef;
+
+    text-align: center;
+
+    padding:
+        70px 20px;
+}
+
+
+.page-label {
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color: #999;
+
+    margin-bottom: 15px;
+}
+
+
+.page-title {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 52px;
+
+    font-weight: 400;
+}
+
+
+/* =====================================================
+   BREADCRUMB
+===================================================== */
+
+.breadcrumb {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding:
+        20px 30px;
+
+    font-size: 11px;
+
+    color: #999;
+}
+
+
+.breadcrumb span {
+
+    padding:
+        0 8px;
+
+    color: #ccc;
+}
+
+
+/* =====================================================
+   WRITE CONTAINER
+===================================================== */
+
+.write-container {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding:
+        30px 30px 120px;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.write-form {
+
+    border-top:
+        2px solid #222;
+}
+
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns:
+        160px 1fr;
+
+    min-height: 65px;
+
+    border-bottom:
+        1px solid #ddd;
+
+    align-items: stretch;
+}
+
+
+.form-label {
+
+    background: #f7f6f2;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        15px 20px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+.form-field {
+
+    padding:
+        10px 15px;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+/* INPUT */
+
+.form-field input,
+.form-field select {
+
+    width: 100%;
+
+    height: 42px;
+
+    border:
+        1px solid #ddd;
+
+    padding:
+        0 13px;
+
+    outline: none;
+
+    font-size: 13px;
+
+    background: #fff;
+}
+
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+
+    border-color: #777;
+}
+
+
+/* TEXTAREA */
+
+.editor-row {
+
+    align-items: stretch;
+}
+
+
+.editor-field {
+
+    display: block;
+
+    padding:
+        20px 15px;
+}
+
+
+textarea {
+
+    width: 100%;
+
+    min-height: 450px;
+
+    resize: vertical;
+
+    border:
+        1px solid #ddd;
+
+    padding:
+        20px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    line-height: 2;
+
+    color: #444;
+}
+
+
+/* =====================================================
+   IMAGE UPLOAD
+===================================================== */
+
+.file-box {
+
+    width: 100%;
+}
+
+
+.file-box input[type="file"] {
+
+    border: none;
+
+    padding: 5px 0;
+
+    height: auto;
+}
+
+
+.image-preview {
+
+    display: none;
+
+    width: 220px;
+
+    height: 140px;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+    border: 1px solid #ddd;
+}
+
+
+.image-preview img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =====================================================
+   CHECKBOX
+===================================================== */
+
+.option-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.option-area label {
+
+    font-size: 13px;
+
+    color: #555;
+}
+
+
+.option-area input {
+
+    width: auto;
+
+    height: auto;
+
+    margin-right: 5px;
+}
+
+
+/* =====================================================
+   BUTTON AREA
+===================================================== */
+
+.button-area {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 45px;
+}
+
+
+.btn {
+
+    min-width: 110px;
+
+    height: 48px;
+
+    padding:
+        0 20px;
+
+    border: 1px solid #444;
+
+    background: #fff;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: .25s;
+}
+
+
+.btn:hover {
+
+    background: #222;
+
+    color: #fff;
+}
+
+
+.btn-primary {
+
+    background: #222;
+
+    color: #fff;
+
+    border-color: #222;
+}
+
+
+.btn-primary:hover {
+
+    background: #555;
+
+    border-color: #555;
+}
+
+
+.btn-danger {
+
+    border-color: #b44;
+
+    color: #a33;
+}
+
+
+.btn-danger:hover {
+
+    background: #a33;
+
+    color: #fff;
+}
+
+
+/* =====================================================
+   COMMENT AREA
+===================================================== */
+
+.comment-section {
+
+    margin-top: 90px;
+
+    border-top:
+        1px solid #222;
+
+    padding-top: 35px;
+}
+
+
+.comment-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+
+.comment-title h2 {
+
+    font-size: 20px;
+
+    font-weight: 500;
+}
+
+
+.comment-count {
+
+    color: #999;
+
+    font-size: 12px;
+}
+
+
+/* COMMENT WRITE */
+
+.comment-write {
+
+    border:
+        1px solid #ddd;
+
+    background: #fafafa;
+
+    padding: 20px;
+}
+
+
+.comment-user {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+
+.comment-user input {
+
+    width: 160px;
+
+    height: 38px;
+
+    border:
+        1px solid #ddd;
+
+    padding:
+        0 10px;
+
+    font-size: 12px;
+}
+
+
+.comment-input-row {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.comment-input-row textarea {
+
+    min-height: 90px;
+
+    height: 90px;
+
+    resize: none;
+
+    background: #fff;
+
+    padding: 12px;
+
+    font-size: 13px;
+}
+
+
+.comment-submit {
+
+    width: 100px;
+
+    border: none;
+
+    background: #333;
+
+    color: #fff;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    transition: .2s;
+}
+
+
+.comment-submit:hover {
+
+    background: #111;
+}
+
+
+/* COMMENT LIST */
+
+.comment-list {
+
+    margin-top: 25px;
+
+    border-top:
+        1px solid #ddd;
+}
+
+
+.comment-item {
+
+    padding:
+        22px 5px;
+
+    border-bottom:
+        1px solid #ddd;
+}
+
+
+.comment-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.comment-author {
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+.comment-date {
+
+    color: #aaa;
+
+    font-size: 11px;
+}
+
+
+.comment-text {
+
+    margin-top: 12px;
+
+    color: #555;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    white-space: pre-line;
+}
+
+
+.comment-actions {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 12px;
+}
+
+
+.comment-actions button {
+
+    border: none;
+
+    background: none;
+
+    color: #999;
+
+    cursor: pointer;
+
+    font-size: 11px;
+}
+
+
+.comment-actions button:hover {
+
+    color: #222;
+}
+
+
+/* =====================================================
+   REPLY COMMENT
+===================================================== */
+
+.comment-reply {
+
+    margin-top: 20px;
+
+    margin-left: 35px;
+
+    padding:
+        18px 20px;
+
+    background: #f5f4ef;
+
+    border-left:
+        2px solid #999;
+}
+
+
+.reply-label {
+
+    font-size: 10px;
+
+    color: #999;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+
+.reply-text {
+
+    font-size: 13px;
+
+    color: #555;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+
+    background: #202622;
+
+    color: #999;
+
+    padding:
+        65px 30px 35px;
+}
+
+
+.footer-inner {
+
+    max-width: 1250px;
+
+    margin: auto;
+}
+
+
+.footer-logo {
+
+    color: #fff;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 27px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 30px;
+}
+
+
+.footer-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.footer-info p {
+
+    font-size: 11px;
+
+    line-height: 2;
+}
+
+
+.footer-menu {
+
+    display: flex;
+
+    gap: 20px;
+
+    color: #ddd;
+
+    font-size: 11px;
+}
+
+
+.copyright {
+
+    margin-top: 40px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid #3b403c;
+
+    color: #666;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width: 800px) {
+
+
+    .header {
+
+        height: 70px;
+    }
+
+
+    .header-inner {
+
+        padding:
+            0 20px;
+    }
+
+
+    .logo {
+
+        font-size: 22px;
+    }
+
+
+    .nav {
+
+        display: none;
+    }
+
+
+    .header-button {
+
+        padding:
+            8px 12px;
+
+        font-size: 10px;
+    }
+
+
+    .page-title-area {
+
+        padding:
+            55px 20px;
+    }
+
+
+    .page-title {
+
+        font-size: 42px;
+    }
+
+
+    .breadcrumb {
+
+        padding:
+            18px 20px;
+    }
+
+
+    .write-container {
+
+        padding:
+            20px 15px 80px;
+    }
+
+
+    .form-row {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .form-label {
+
+        min-height: 45px;
+
+        padding:
+            12px 15px;
+    }
+
+
+    .form-field {
+
+        padding:
+            10px 0;
+    }
+
+
+    textarea {
+
+        min-height: 350px;
+    }
+
+
+    .button-area {
+
+        flex-wrap: wrap;
+
+        margin-top: 30px;
+    }
+
+
+    .btn {
+
+        min-width:
+            calc(50% - 5px);
+    }
+
+
+    .comment-input-row {
+
+        flex-direction: column;
+    }
+
+
+    .comment-input-row textarea {
+
+        width: 100%;
+    }
+
+
+    .comment-submit {
+
+        width: 100%;
+
+        height: 45px;
+    }
+
+
+    .comment-user {
+
+        flex-direction: column;
+    }
+
+
+    .comment-user input {
+
+        width: 100%;
+    }
+
+
+    .comment-reply {
+
+        margin-left: 15px;
+    }
+
+
+    .footer {
+
+        padding:
+            55px 20px 30px;
+    }
+
+
+    .footer-info {
+
+        flex-direction: column;
+    }
+
+
+    .footer-menu {
+
+        flex-wrap: wrap;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="header-inner">
+
+
+        <a href="index.html"
+           class="logo">
+
+            FOREST
+
+        </a>
+
+
+        <nav class="nav">
+
+            <a href="index.html">
+                RESORT
+            </a>
+
+            <a href="#">
+                EXPERIENCE
+            </a>
+
+            <a href="news-list.html">
+                NEWS
+            </a>
+
+            <a href="#">
+                ABOUT
+            </a>
+
+        </nav>
+
+
+        <a href="#"
+           class="header-button">
+
+            예약하기
+
+        </a>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     PAGE TITLE
+===================================================== -->
+
+<section class="page-title-area">
+
+    <div class="page-label">
+        RESORT NEWS
+    </div>
+
+    <h1 class="page-title">
+        News Write
+    </h1>
+
+</section>
+
+
+
+<!-- =====================================================
+     BREADCRUMB
+===================================================== -->
+
+<div class="breadcrumb">
+
+    HOME
+
+    <span>›</span>
+
+    RESORT NEWS
+
+    <span>›</span>
+
+    NEWS WRITE
+
+</div>
+
+
+
+<!-- =====================================================
+     WRITE
+===================================================== -->
+
+<main class="write-container">
+
+
+<form class="write-form"
+      id="newsForm">
+
+
+    <!-- CATEGORY -->
+
+    <div class="form-row">
+
+        <div class="form-label">
+            분류
+        </div>
+
+        <div class="form-field">
+
+            <select id="category">
+
+                <option value="NOTICE">
+                    NOTICE
+                </option>
+
+                <option value="NEWS">
+                    NEWS
+                </option>
+
+                <option value="EVENT">
+                    EVENT
+                </option>
+
+                <option value="WELLNESS">
+                    WELLNESS
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- TITLE -->
+
+    <div class="form-row">
+
+        <div class="form-label">
+            제목
+        </div>
+
+        <div class="form-field">
+
+            <input
+                type="text"
+                id="title"
+                placeholder="뉴스 제목을 입력해주세요."
+                required>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- WRITER -->
+
+    <div class="form-row">
+
+        <div class="form-label">
+            작성자
+        </div>
+
+        <div class="form-field">
+
+            <input
+                type="text"
+                id="writer"
+                value="FOREST RESORT"
+                placeholder="작성자">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PASSWORD -->
+
+    <div class="form-row">
+
+        <div class="form-label">
+            비밀번호
+        </div>
+
+        <div class="form-field">
+
+            <input
+                type="password"
+                id="password"
+                placeholder="관리용 비밀번호">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- IMAGE -->
+
+    <div class="form-row">
+
+        <div class="form-label">
+            대표 이미지
+        </div>
+
+        <div class="form-field">
+
+            <div class="file-box">
+
+                <input
+                    type="file"
+                    id="image"
+                    accept="image/*">
+
+                <div
+                    class="image-preview"
+                    id="imagePreview">
+
+                    <img id="previewImg"
+                         src=""
+                         alt="이미지 미리보기">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- CONTENT -->
+
+    <div class="form-row editor-row">
+
+        <div class="form-label">
+            내용
+        </div>
+
+        <div class="form-field editor-field">
+
+            <textarea
+                id="content"
+                placeholder="뉴스 내용을 입력해주세요."></textarea>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- OPTIONS -->
+
+    <div class="form-row">
+
+        <div class="form-label">
+            게시 옵션
+        </div>
+
+        <div class="form-field">
+
+            <div class="option-area">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="notice">
+
+                    공지로 등록
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="comment"
+                        checked>
+
+                    댓글 허용
+
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</form>
+
+
+
+<!-- =====================================================
+     BUTTON
+===================================================== -->
+
+<div class="button-area">
+
+
+    <!-- 목록 -->
+
+    <button
+        type="button"
+        class="btn"
+        onclick="goList()">
+
+        목록
+
+    </button>
+
+
+    <!-- 수정 -->
+
+    <button
+        type="button"
+        class="btn btn-primary"
+        onclick="editPost()">
+
+        수정
+
+    </button>
+
+
+    <!-- 삭제 -->
+
+    <button
+        type="button"
+        class="btn btn-danger"
+        onclick="deletePost()">
+
+        삭제
+
+    </button>
+
+
+    <!-- 답변달기 -->
+
+    <button
+        type="button"
+        class="btn"
+        onclick="replyPost()">
+
+        답변달기
+
+    </button>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     COMMENT
+===================================================== -->
+
+<section class="comment-section"
+         id="comments">
+
+
+    <div class="comment-title">
+
+        <h2>
+            댓글
+        </h2>
+
+        <span
+            class="comment-count"
+            id="commentCount">
+
+            댓글 3개
+
+        </span>
+
+    </div>
+
+
+
+    <!-- COMMENT WRITE -->
+
+    <div class="comment-write">
+
+
+        <div class="comment-user">
+
+            <input
+                type="text"
+                id="commentName"
+                placeholder="이름">
+
+            <input
+                type="password"
+                id="commentPassword"
+                placeholder="비밀번호">
+
+        </div>
+
+
+        <div class="comment-input-row">
+
+            <textarea
+                id="commentText"
+                placeholder="댓글을 입력해주세요."></textarea>
+
+
+            <button
+                type="button"
+                class="comment-submit"
+                onclick="addComment()">
+
+                댓글 등록
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- COMMENT LIST -->
+
+    <div class="comment-list"
+         id="commentList">
+
+
+        <!-- COMMENT 1 -->
+
+        <div class="comment-item">
+
+            <div class="comment-top">
+
+                <span class="comment-author">
+                    김민수
+                </span>
+
+                <span class="comment-date">
+                    2026.09.10 14:25
+                </span>
+
+            </div>
+
+
+            <div class="comment-text">
+
+                가을 시즌 프로그램이 기대됩니다.
+                가족과 함께 방문할 예정이에요.
+
+            </div>
+
+
+            <div class="comment-actions">
+
+                <button onclick="replyComment(this)">
+                    답글
+                </button>
+
+                <button onclick="deleteComment(this)">
+                    삭제
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- COMMENT 2 -->
+
+        <div class="comment-item">
+
+            <div class="comment-top">
+
+                <span class="comment-author">
+                    이서연
+                </span>
+
+                <span class="comment-date">
+                    2026.09.10 16:12
+                </span>
+
+            </div>
+
+
+            <div class="comment-text">
+
+                좋은 정보 감사합니다.
+                이번 가을에 꼭 방문하고 싶네요.
+
+            </div>
+
+
+            <div class="comment-actions">
+
+                <button onclick="replyComment(this)">
+                    답글
+                </button>
+
+                <button onclick="deleteComment(this)">
+                    삭제
+                </button>
+
+            </div>
+
+
+            <!-- REPLY -->
+
+            <div class="comment-reply">
+
+                <div class="reply-label">
+                    FOREST RESORT REPLY
+                </div>
+
+                <div class="reply-text">
+
+                    관심 가져주셔서 감사합니다.
+                    방문하시는 동안 편안한 시간이
+                    되실 수 있도록 준비하겠습니다.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- COMMENT 3 -->
+
+        <div class="comment-item">
+
+            <div class="comment-top">
+
+                <span class="comment-author">
+                    박지훈
+                </span>
+
+                <span class="comment-date">
+                    2026.09.11 09:20
+                </span>
+
+            </div>
+
+
+            <div class="comment-text">
+
+                객실 예약 관련해서도 문의드리고 싶습니다.
+
+            </div>
+
+
+            <div class="comment-actions">
+
+                <button onclick="replyComment(this)">
+                    답글
+                </button>
+
+                <button onclick="deleteComment(this)">
+                    삭제
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+
+        <div class="footer-logo">
+            FOREST
+        </div>
+
+
+        <div class="footer-info">
+
+
+            <div>
+
+                <p>
+                    FOREST HOTEL & RESORT
+                </p>
+
+                <p>
+                    서울특별시 ○○구 ○○로 100
+                </p>
+
+                <p>
+                    TEL. 02-0000-0000
+                </p>
+
+            </div>
+
+
+            <div class="footer-menu">
+
+                <a href="#">
+                    회사소개
+                </a>
+
+                <a href="#">
+                    오시는 길
+                </a>
+
+                <a href="#">
+                    개인정보처리방침
+                </a>
+
+                <a href="#">
+                    이용약관
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            COPYRIGHT © FOREST HOTEL & RESORT.
+            ALL RIGHTS RESERVED.
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   목록
+===================================================== */
+
+function goList() {
+
+    location.href = "news-list.html";
+
+}
+
+
+/* =====================================================
+   수정
+===================================================== */
+
+function editPost() {
+
+    const title =
+        document.getElementById("title").value;
+
+    if (!title.trim()) {
+
+        alert(
+            "제목을 입력해주세요."
+        );
+
+        return;
+    }
+
+
+    alert(
+        "뉴스 글이 수정되었습니다."
+    );
+
+}
+
+
+/* =====================================================
+   삭제
+===================================================== */
+
+function deletePost() {
+
+    const result =
+        confirm(
+            "정말 이 게시글을 삭제하시겠습니까?"
+        );
+
+
+    if (result) {
+
+        alert(
+            "게시글이 삭제되었습니다."
+        );
+
+        location.href =
+            "news-list.html";
+
+    }
+
+}
+
+
+/* =====================================================
+   답변달기
+===================================================== */
+
+function replyPost() {
+
+    const content =
+        document.getElementById("content");
+
+
+    content.focus();
+
+
+    content.value +=
+        "\n\n[FOREST RESORT 답변]\n\n";
+
+
+}
+
+
+/* =====================================================
+   IMAGE PREVIEW
+===================================================== */
+
+document
+    .getElementById("image")
+    .addEventListener(
+        "change",
+        function(event) {
+
+
+            const file =
+                event.target.files[0];
+
+
+            if (!file) {
+
+                return;
+
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function(e) {
+
+
+                    document
+                        .getElementById(
+                            "previewImg"
+                        )
+                        .src =
+                        e.target.result;
+
+
+                    document
+                        .getElementById(
+                            "imagePreview"
+                        )
+                        .style.display =
+                        "block";
+
+                };
+
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+
+/* =====================================================
+   COMMENT ADD
+===================================================== */
+
+function addComment() {
+
+
+    const name =
+        document
+            .getElementById(
+                "commentName"
+            )
+            .value
+            .trim();
+
+
+    const password =
+        document
+            .getElementById(
+                "commentPassword"
+            )
+            .value
+            .trim();
+
+
+    const text =
+        document
+            .getElementById(
+                "commentText"
+            )
+            .value
+            .trim();
+
+
+    if (!name) {
+
+        alert(
+            "이름을 입력해주세요."
+        );
+
+        return;
+
+    }
+
+
+    if (!password) {
+
+        alert(
+            "비밀번호를 입력해주세요."
+        );
+
+        return;
+
+    }
+
+
+    if (!text) {
+
+        alert(
+            "댓글 내용을 입력해주세요."
+        );
+
+        return;
+
+    }
+
+
+    const now =
+        new Date();
+
+
+    const date =
+        now.getFullYear()
+        + "."
+        + String(
+            now.getMonth() + 1
+        ).padStart(2, "0")
+        + "."
+        + String(
+            now.getDate()
+        ).padStart(2, "0")
+        + " "
+        + String(
+            now.getHours()
+        ).padStart(2, "0")
+        + ":"
+        + String(
+            now.getMinutes()
+        ).padStart(2, "0");
+
+
+    const item =
+        document.createElement(
+            "div"
+        );
+
+
+    item.className =
+        "comment-item";
+
+
+    item.innerHTML = `
+
+        <div class="comment-top">
+
+            <span class="comment-author">
+                ${escapeHtml(name)}
+            </span>
+
+            <span class="comment-date">
+                ${date}
+            </span>
+
+        </div>
+
+
+        <div class="comment-text">
+
+            ${escapeHtml(text)}
+
+        </div>
+
+
+        <div class="comment-actions">
+
+            <button
+                onclick="replyComment(this)">
+
+                답글
+
+            </button>
+
+            <button
+                onclick="deleteComment(this)">
+
+                삭제
+
+            </button>
+
+        </div>
+
+    `;
+
+
+    const list =
+        document.getElementById(
+            "commentList"
+        );
+
+
+    list.insertBefore(
+        item,
+        list.firstChild
+    );
+
+
+    document
+        .getElementById(
+            "commentName"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "commentPassword"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "commentText"
+        )
+        .value = "";
+
+
+    updateCommentCount();
+
+}
+
+
+/* =====================================================
+   COMMENT DELETE
+===================================================== */
+
+function deleteComment(button) {
+
+
+    const result =
+        confirm(
+            "댓글을 삭제하시겠습니까?"
+        );
+
+
+    if (!result) {
+
+        return;
+
+    }
+
+
+    const item =
+        button.closest(
+            ".comment-item"
+        );
+
+
+    item.remove();
+
+
+    updateCommentCount();
+
+}
+
+
+/* =====================================================
+   COMMENT REPLY
+===================================================== */
+
+function replyComment(button) {
+
+
+    const item =
+        button.closest(
+            ".comment-item"
+        );
+
+
+    let reply =
+        item.querySelector(
+            ".reply-write"
+        );
+
+
+    if (reply) {
+
+        reply.remove();
+
+        return;
+
+    }
+
+
+    reply =
+        document.createElement(
+            "div"
+        );
+
+
+    reply.className =
+        "comment-reply reply-write";
+
+
+    reply.innerHTML = `
+
+        <div class="reply-label">
+            REPLY
+        </div>
+
+        <textarea
+            placeholder="답글을 입력해주세요."
+            style="
+                width:100%;
+                height:80px;
+                border:1px solid #ddd;
+                padding:10px;
+                resize:none;
+                margin-bottom:8px;
+            ">
+        </textarea>
+
+        <button
+            onclick="submitReply(this)"
+            style="
+                background:#333;
+                color:#fff;
+                border:0;
+                padding:8px 18px;
+                cursor:pointer;
+                font-size:11px;
+            ">
+
+            답글 등록
+
+        </button>
+
+    `;
+
+
+    item.appendChild(reply);
+
+}
+
+
+/* =====================================================
+   REPLY SUBMIT
+===================================================== */
+
+function submitReply(button) {
+
+
+    const box =
+        button.parentElement;
+
+
+    const textarea =
+        box.querySelector(
+            "textarea"
+        );
+
+
+    const text =
+        textarea.value.trim();
+
+
+    if (!text) {
+
+        alert(
+            "답글 내용을 입력해주세요."
+        );
+
+        return;
+
+    }
+
+
+    box.innerHTML = `
+
+        <div class="reply-label">
+            FOREST RESORT REPLY
+        </div>
+
+        <div class="reply-text">
+            ${escapeHtml(text)}
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   COMMENT COUNT
+===================================================== */
+
+function updateCommentCount() {
+
+
+    const count =
+        document.querySelectorAll(
+            "#commentList > .comment-item"
+        ).length;
+
+
+    document
+        .getElementById(
+            "commentCount"
+        )
+        .textContent =
+        "댓글 "
+        + count
+        + "개";
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+</script>
+
+
+</body>
+</html>

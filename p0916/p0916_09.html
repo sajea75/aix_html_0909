@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>News List</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family:
+            "Pretendard",
+            "Noto Sans KR",
+            Arial,
+            sans-serif;
+        color: #222;
+        background: #fff;
+        line-height: 1.6;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    /* =========================
+       Header
+    ========================= */
+
+    .header {
+        height: 90px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 6%;
+        background: #fff;
+    }
+
+    .logo {
+        font-size: 25px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        color: #1f342b;
+    }
+
+    .nav {
+        display: flex;
+        gap: 42px;
+        font-size: 15px;
+    }
+
+    .nav a {
+        transition: color .25s;
+    }
+
+    .nav a:hover {
+        color: #78927f;
+    }
+
+
+    /* =========================
+       Page Hero
+    ========================= */
+
+    .page-hero {
+        height: 330px;
+        background:
+            linear-gradient(
+                rgba(32, 55, 44, .58),
+                rgba(32, 55, 44, .58)
+            ),
+            url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1800&q=80")
+            center / cover no-repeat;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+    }
+
+    .page-hero h1 {
+        font-size: 48px;
+        font-weight: 500;
+        letter-spacing: -2px;
+        margin-bottom: 10px;
+    }
+
+    .page-hero p {
+        font-size: 15px;
+        opacity: .9;
+    }
+
+
+    /* =========================
+       News Section
+    ========================= */
+
+    .news-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 100px 30px 130px;
+    }
+
+    .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 45px;
+    }
+
+    .section-title .title {
+        font-size: 38px;
+        font-weight: 500;
+        letter-spacing: -2px;
+    }
+
+    .section-title .desc {
+        color: #888;
+        font-size: 14px;
+    }
+
+
+    /* =========================
+       Search
+    ========================= */
+
+    .news-search {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #222;
+    }
+
+    .category {
+        display: flex;
+        gap: 8px;
+    }
+
+    .category button {
+        border: 0;
+        background: #f5f5f3;
+        padding: 10px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 13px;
+        color: #666;
+    }
+
+    .category button.active {
+        background: #30493d;
+        color: #fff;
+    }
+
+    .search-box {
+        display: flex;
+        width: 260px;
+        border-bottom: 1px solid #777;
+    }
+
+    .search-box input {
+        width: 100%;
+        border: 0;
+        outline: none;
+        padding: 10px 5px;
+        font-size: 14px;
+    }
+
+    .search-box button {
+        width: 40px;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        font-size: 17px;
+    }
+
+
+    /* =========================
+       News Table
+    ========================= */
+
+    .news-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    .news-table thead {
+        background: #f7f7f5;
+    }
+
+    .news-table th {
+        padding: 18px 15px;
+        font-size: 13px;
+        color: #555;
+        font-weight: 500;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .news-table td {
+        padding: 23px 15px;
+        border-bottom: 1px solid #e8e8e8;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .news-table th:nth-child(1),
+    .news-table td:nth-child(1) {
+        width: 90px;
+        text-align: center;
+    }
+
+    .news-table th:nth-child(3),
+    .news-table td:nth-child(3) {
+        width: 150px;
+        text-align: center;
+    }
+
+    .news-table th:nth-child(4),
+    .news-table td:nth-child(4) {
+        width: 130px;
+        text-align: center;
+    }
+
+    .news-title {
+        color: #222;
+        font-size: 16px;
+        font-weight: 500;
+        transition: color .25s;
+    }
+
+    .news-title:hover {
+        color: #718b78;
+    }
+
+    .news-tag {
+        display: inline-block;
+        min-width: 65px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        background: #edf2ee;
+        color: #526a5a;
+        font-size: 12px;
+    }
+
+
+    /* =========================
+       Pagination
+    ========================= */
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 55px;
+    }
+
+    .pagination a {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 13px;
+    }
+
+    .pagination a.active {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #30493d;
+        color: #fff;
+    }
+
+
+    /* =========================
+       Footer
+    ========================= */
+
+    .footer {
+        background: #28362f;
+        color: #c8d0cb;
+        padding: 60px 6%;
+    }
+
+    .footer-inner {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .footer-logo {
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 25px;
+    }
+
+    .footer-info {
+        font-size: 13px;
+        line-height: 2;
+        color: #aab4ae;
+    }
+
+    .copyright {
+        margin-top: 25px;
+        font-size: 11px;
+        color: #7f8b84;
+    }
+
+
+    /* =========================
+       Mobile
+    ========================= */
+
+    @media (max-width: 768px) {
+
+        .header {
+            height: 70px;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 21px;
+        }
+
+        .nav {
+            display: none;
+        }
+
+        .page-hero {
+            height: 240px;
+        }
+
+        .page-hero h1 {
+            font-size: 36px;
+        }
+
+        .news-section {
+            padding: 65px 20px 90px;
+        }
+
+        .section-title {
+            display: block;
+        }
+
+        .section-title .title {
+            font-size: 30px;
+        }
+
+        .section-title .desc {
+            margin-top: 8px;
+        }
+
+        .news-search {
+            display: block;
+        }
+
+        .category {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 15px;
+        }
+
+        .search-box {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .news-table th:nth-child(1),
+        .news-table td:nth-child(1) {
+            width: 55px;
+        }
+
+        .news-table th:nth-child(3),
+        .news-table td:nth-child(3) {
+            width: 80px;
+        }
+
+        .news-table th:nth-child(4),
+        .news-table td:nth-child(4) {
+            display: none;
+        }
+
+        .news-table td {
+            padding: 18px 8px;
+        }
+
+        .news-title {
+            font-size: 14px;
+        }
+
+        .news-table td:nth-child(3) {
+            font-size: 12px;
+        }
+    }
+</style>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+
+    <a href="#" class="logo">
+        FOREST RESORT
+    </a>
+
+    <nav class="nav">
+        <a href="#">ABOUT</a>
+        <a href="#">ROOM</a>
+        <a href="#">FACILITY</a>
+        <a href="#">SPECIAL</a>
+        <a href="#">NEWS</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+<section class="page-hero">
+
+    <div>
+        <h1>NEWS</h1>
+        <p>자연과 함께하는 새로운 소식을 전해드립니다.</p>
+    </div>
+
+</section>
+
+
+<!-- NEWS -->
+<main class="news-section">
+
+    <div class="section-title">
+
+        <div class="title">
+            Resort News
+        </div>
+
+        <div class="desc">
+            리조트의 새로운 소식과 다양한 안내를 확인하세요.
+        </div>
+
+    </div>
+
+
+    <!-- CATEGORY + SEARCH -->
+    <div class="news-search">
+
+        <div class="category">
+
+            <button class="active">전체</button>
+            <button>리조트</button>
+            <button>이벤트</button>
+            <button>공지사항</button>
+
+        </div>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                placeholder="검색어를 입력하세요"
+            >
+
+            <button>
+                ⌕
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- NEWS TABLE -->
+    <table class="news-table">
+
+        <thead>
+
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>구분</th>
+                <th>등록일</th>
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            <tr>
+                <td>18</td>
+
+                <td>
+                    <a href="#" class="news-title">
+                        가을 시즌 객실 패키지 및 이용 안내
+                    </a>
+                </td>
+
+                <td>
+                    <span class="news-tag">
+                        리조트
+                    </span>
+                </td>
+
+                <td>
+                    2026.09.08
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>17</td>
+
+                <td>
+                    <a href="#" class="news-title">
+                        신규 웰니스 프로그램 오픈 안내
+                    </a>
+                </td>
+
+                <td>
+                    <span class="news-tag">
+                        프로그램
+                    </span>
+                </td>
+
+                <td>
+                    2026.08.25
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>16</td>
+
+                <td>
+                    <a href="#" class="news-title">
+                        추석 연휴 특별 프로그램 운영 안내
+                    </a>
+                </td>
+
+                <td>
+                    <span class="news-tag">
+                        이벤트
+                    </span>
+                </td>
+
+                <td>
+                    2026.08.12
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>15</td>
+
+                <td>
+                    <a href="#" class="news-title">
+                        프리미엄 다이닝 메뉴 리뉴얼 안내
+                    </a>
+                </td>
+
+                <td>
+                    <span class="news-tag">
+                        다이닝
+                    </span>
+                </td>
+
+                <td>
+                    2026.07.30
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>14</td>
+
+                <td>
+                    <a href="#" class="news-title">
+                        여름 시즌 시설 운영시간 변경 안내
+                    </a>
+                </td>
+
+                <td>
+                    <span class="news-tag">
+                        공지
+                    </span>
+                </td>
+
+                <td>
+                    2026.07.15
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>13</td>
+
+                <td>
+                    <a href="#" class="news-title">
+                        고객 편의를 위한 신규 서비스 오픈
+                    </a>
+                </td>
+
+                <td>
+                    <span class="news-tag">
+                        뉴스
+                    </span>
+                </td>
+
+                <td>
+                    2026.06.28
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>12</td>
+
+                <td>
+                    <a href="#" class="news-title">
+                        리조트 이용 고객 대상 특별 혜택 안내
+                    </a>
+                </td>
+
+                <td>
+                    <span class="news-tag">
+                        혜택
+                    </span>
+                </td>
+
+                <td>
+                    2026.06.10
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>11</td>
+
+                <td>
+                    <a href="#" class="news-title">
+                        자연 속에서 즐기는 새로운 휴식 프로그램
+                    </a>
+                </td>
+
+                <td>
+                    <span class="news-tag">
+                        스토리
+                    </span>
+                </td>
+
+                <td>
+                    2026.05.22
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+
+        <a href="#">‹</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">›</a>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-inner">
+
+        <div class="footer-logo">
+            FOREST RESORT
+        </div>
+
+        <div class="footer-info">
+            서울특별시 ○○구 ○○로 00<br>
+            대표전화 : 02-0000-0000<br>
+            이메일 : info@example.com
+        </div>
+
+        <div class="copyright">
+            © 2026 FOREST RESORT. ALL RIGHTS RESERVED.
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
