@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        table,th,td{border: 1px solid black; border-collapse: collapse;}
-        th,td{width: 80px; height: 40px;}
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+        th,td{width:80px; height:40px; }
     </style>
 </head>
 <body>
@@ -25,33 +25,48 @@
         </tbody>
     </table>
     <script>
-        var arr =['홍길동','유관순','이순신']
-        var arr_k =[100,90,80]
+        var arr = ['홍길동','유관순','이순신'];
+        var arr_k = [100,90,80];
         function saveBtn(){
             var nlist = document.getElementById("tbody");
             var name = document.getElementById("name").value;
             var kor = document.getElementById("kor").value;
-
             arr.push(name);
-            arr_k. push(kor);
+            arr_k.push(kor);
+            document.getElementById("name").value = "";
+            document.getElementById("kor").value = "";
+            //console.log(arr);
+            //alert("test")
+            nlist.innerHTML += `<tr>
+                <td>${name}</td>
+                <td>${kor}</td>
+                </tr>`;
 
-            document.getElementById("name").value="";
-            document.getElementById("kor").value="";
-            //console.log(arr,arr_k);
-            nlist.innerHTML +=`<tr>
+        }
+
+
+        var txtHtml = ``;
+        for(var i=0;i<arr.length;i++){
+            txtHtml += `<tr>
                 <td>${arr[i]}</td>
                 <td>${arr_k[i]}</td>
                 </tr>`;
         }
-
-        var txtHtml = ``;
-        for (var i=0;i<arr.length;i++){
-            txtHtml += `<tr>
-                <td>${arr[i]}</td>
-                <td>${arr_k[i]}</td>
-            </tr>`
+        document.getElementById("tbody").innerHTML = txtHtml;
+        /*
+        var arr = [1,2]
+        for(var i=0;i<arr.length;i++){
+            document.write(arr[i]+"<br>");
         }
-        document.getElementById("tbody").innerHTML =txtHtml;
+        arr.push(10);
+        arr.push(9);
+        arr.push(8);
+        console.log("배열 : ",arr);
+        arr.pop()
+        console.log("배열2 : ",arr);
+
+        console.log("길이 : ",arr.length);
+        */
     </script>
 </body>
 </html>

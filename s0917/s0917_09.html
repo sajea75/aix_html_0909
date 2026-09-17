@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+        th,td{width:80px; height:40px; }
+    </style>
+</head>
+<body>
+    <input type="text" name="name" id="name" placeholder="이름입력">
+    <input type="text" name="kor" id="kor" placeholder="국어점수입력">
+    <input type="text" name="eng" id="eng" placeholder="영어점수임력">
+    <input type="text" name="math" id="math" placeholder="수학점수입력">
+    <input type="text" name="sci" id="sci" placeholder="과학학점수입력">
+    <input type="text" name="total" id="total" placeholder="합계점수입력" readonly>
+    <input type="text" name="avg" id="avg" placeholder="평균점수입력" readonly>
+    <br>
+
+    <button type="button" onclick="saveBtn()">저장</button>
+
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>국어</th>
+            <th>영어</th>
+            <th>수학</th>
+            <th>과학</th>
+            <th>합계</th>
+            <th>평균</th>>
+        </tr>
+        <tbody id="tbody">
+
+    </tbody>
+
+    </table>
+
+    <script>
+        var arr = ['홍길동','유관순','이순신'];
+        var arr_k = [100,90,80];
+        var arr_e = [100,90,80];
+        var arr_m = [100,90,80];
+        var arr_s = [100,90,80];
+        var arr_t = [400,360,320];
+        var arr_a = [100,90,80];
+
+        function saveBtn(){
+            var nlist = document.getElementById("tbody");
+            var name = document.getElementById("name").value;
+            var kor = Number(document.getElementById("kor").value);
+            var eng = Number(document.getElementById("eng").value);
+            var math = Number(document.getElementById("math").value);
+            var sci = Number(document.getElementById("sci").value);
+            var total = kor+eng+math+sci
+            var avg = total/4
+            
+            arr.push(name);
+            arr_k.push(kor);
+            arr_e.push(eng);
+            arr_m.push(math);
+            arr_s.push(sci);
+            arr_t.push(total);
+            arr_a.push(avg);
+
+            var i = arr.length -1;
+
+            document.getElementById("name").value = "";
+            document.getElementById("kor").value = "";
+            document.getElementById("eng").value = "";
+            document.getElementById("math").value = "";
+            document.getElementById("sci").value = "";
+            document.getElementById("total").value = total;
+            document.getElementById("avg").value = avg;
+
+            nlist.innerHTML += `<tr>
+                <td>${name}</td>
+                <td>${kor}</td>
+                <td>${eng}</td>
+                <td>${math}</td>
+                <td>${sci}</td>
+                <td>${total}</td>
+                <td>${avg}</td>
+                </tr>`;
+
+            }
+
+            var txtHtml = ``;
+            for(var i=0;i<arr.length;i++){
+                txtHtml += `<tr>
+                    <td>${arr[i]}</td>
+                    <td>${arr_k[i]}</td>
+                    <td>${arr_e[i]}</td>
+                    <td>${arr_m[i]}</td>
+                    <td>${arr_s[i]}</td>
+                    <td>${arr_t[i]}</td>
+                    <td>${arr_a[i]}</td>
+                    </tr>`;
+
+            }
+
+            document.getElementById("tbody").innerHTML = txtHtml;
+            
+    </script>
+</body>
+</html>
