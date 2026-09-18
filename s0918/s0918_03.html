@@ -6,29 +6,33 @@
     <title>Document</title>
     <style>
         div{width:600px; height:1000px;
+        border:1px solid black;
         }
         #d01{background: yellow;}
         #d02{background: green;}
         #d03{background: pink;}
-            
-            
+        button{width:100px; height:100px;
+        border-radius: 50%;
+    position: fixed; left:700px; top:700px;
+    }
     </style>
 </head>
 <body>
-    <h2>앵커태크</h2>
+    <h2 id="top">앵커태그</h2>
     <div id="d01"></div>
     <div id="d02"></div>
     <div id="d03"></div>
-    <button type="button" onclick="topBth()">Top</button>
-
+    <a href="#top"><span>앵커태그링크</span></a>
+    <button type="button" onclick="topBtn()">TOP</button>
 </body>
 <script>
     
-    function topBth(){
+    function topBtn(){
         //alert("test")
         window.scrollTo({
-            top:0,left:0,dehavior:"smooth"
+            top:0,left:0,behavior:'smooth'
         });
     }
+    
 </script>
 </html>
