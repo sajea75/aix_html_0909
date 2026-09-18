@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{width:600px; height:1000px;
+        }
+        #d01{background: yellow;}
+        #d02{background: green;}
+        #d03{background: pink;}
+            
+            
+    </style>
+</head>
+<body>
+    <h2>앵커태크</h2>
+    <div id="d01"></div>
+    <div id="d02"></div>
+    <div id="d03"></div>
+    <button type="button" onclick="topBth()">Top</button>
+
+</body>
+<script>
+    
+    function topBth(){
+        //alert("test")
+        window.scrollTo({
+            top:0,left:0,dehavior:"smooth"
+        });
+    }
+</script>
+</html>

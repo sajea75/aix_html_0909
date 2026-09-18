@@ -4,10 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/notice_list.css">
+  <script>
+    students = [];
+
+    $(function(){
+      //alert("test");
+      //------------>
+      $.ajax({
+                url:"https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?serviceKey=918RE13GA7OY7ZEmUzApgbOeAcQoZ%2FaHsXWcqPAKQ9YNNPj83KOstRMRIUrCFIAcm9qj2R6b7NFZjp%2FYsYzJLg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&_type=json",
+                type:"get",
+                data:{},
+                dataType:"json",
+                success:function(data){
+                    alert("성공")
+                    console.log(data.response.body.items.item);
+                    //서버에서 데이터를 받아서 변수에 저장
+                    students = data.response.body.items.item;
+                    //------->
+                    var txtHtml = '';
+                    for(var i=0;i<10;i++){
+                      txtHtml += `<tr>
+                          <td>${students[i].galContentId}</td>
+                          <td class="table-title">${students[i].galTitle}</td>
+                          <td>${students[i].galPhotographyMonth}</td>
+                          <td>${students[i].galPhotographer}</td>
+                          <td><img style="width:100px;" src="${students[i].galWebImageUrl}"></td>
+                        </tr>`;
+                    }
+                    $("#tbody").html(txtHtml);
+
+
+                },
+                error:function(){
+                    alert("실패");
+                }
+            })
+
+
+
+      //------------>
+
+
+    });
+  </script>
 </head>
 <body>
   <header>
@@ -64,26 +108,24 @@
 
     <table>
       <colgroup>
-        <col width="18%">
-        <col width="60%">
-        <col width="18%">
+        <col width="20%">
+        <col width="20%">
+        <col width="20%">
+        <col width="20%">
+        <col width="20%">
       </colgroup>
       <tr>
         <th>No.</th>
         <th>제목</th>
-        <th>작성일</th>
+        <th>촬영일</th>
+        <th>작가</th>
+        <th>이미지</th>
       </tr>
       <tbody id="tbody">
 
       </tbody>
     </table>
-    <script>
-        var txtHtml =``;
-          for(var i=1;i<=10;i++){
-            txtHtml +=`<tr><td>${i}</td><td class="table-title">카카오플러스 친구 오픈</td><td>2018-07-11</td></tr>`;
-          }
-          document.getElementById("tbody").innerHTML = txtHtml;
-    </script>
+
     <ul class="page-num">
       <li class="first"></li>
       <li class="prev"></li>
@@ -96,6 +138,10 @@
 
     <div class="write">쓰기</div>
   </section>
+  <script>
+
+
+  </script>
 
   <footer>
     <div class="wrapper">
@@ -140,4 +186,3 @@
   </footer>
 </body>
 </html>
-
