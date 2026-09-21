@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <title>학생성적프로그램</title>
+
+    <style>
+        *{margin:0; padding:0;}
+
+        div{width:1200px;margin:0 auto; text-align:center;}
+
+        h2{margin:20px 0 10px 0;}
+
+        table,th,td{border:1px solid black; border-collapse:collapse;}
+
+        table{width:1200px;}
+
+        th,td{height:40px;}
+
+        th{background: #efefef;}
+
+        button{width:80px; height:35px;}
+
+        input{width:200px; height:30px; margin:3px; padding-left:5px;}
+    </style>
+
+    <script>
+
+        $(function(){
+
+            // ============================================
+            // 현재 수정 중인 학생 번호
+            // ============================================
+            var updateId = null;
+
+
+            // ============================================
+            // 저장 버튼
+            // ============================================
+            $("#saveBtn").click(function(){
+
+                // ----------------------------
+                // 입력값 가져오기
+                // ----------------------------
+                var no = Number($("#no").val());
+                var name = $("#name").val();
+                var kor = Number($("#kor").val());
+                var eng = Number($("#eng").val());
+                var math = Number($("#math").val());
+
+
+                // ----------------------------
+                // 입력값 검사
+                // ----------------------------
+
+                if($("#no").val() == ""){
+                    alert("번호를 입력해주세요.");
+                    $("#no").focus();
+                    return;
+                }
+
+                if($("#name").val() == ""){
+                    alert("이름을 입력해주세요.");
+                    $("#name").focus();
+                    return;
+                }
+
+                if($("#kor").val() == ""){
+                    alert("국어점수를 입력해주세요.");
+                    $("#kor").focus();
+                    return;
+                }
+
+                if($("#eng").val() == ""){
+                    alert("영어점수를 입력해주세요.");
+                    $("#eng").focus();
+                    return;
+                }
+
+                if($("#math").val() == ""){
+                    alert("수학점수를 입력해주세요.");
+                    $("#math").focus();
+                    return;
+                }
+
+
+                // ----------------------------
+                // 점수 범위 검사
+                // ----------------------------
+
+                if(kor < 0 || kor > 100){
+                    alert("국어점수는 0~100점 사이로 입력해주세요.");
+                    $("#kor").focus();
+                    return;
+                }
+
+                if(eng < 0 || eng > 100){
+                    alert("영어점수는 0~100점 사이로 입력해주세요.");
+                    $("#eng").focus();
+                    return;
+                }
+
+                if(math < 0 || math > 100){
+                    alert("수학점수는 0~100점 사이로 입력해주세요.");
+                    $("#math").focus();
+                    return;
+                }
+
+
+                // ============================================
+                // 합계 / 평균 계산
+                // ============================================
+
+                var total = kor + eng + math;
+                var avg = total / 3;
+
+
+                // ============================================
+                // 수정 모드인지 확인
+                // ============================================
+
+                if(updateId != null){
+
+                    if(confirm("학생 성적을 수정하시겠습니까?")){
+
+                        var tr = $("#" + updateId);
+
+                        tr.find("td:eq(0)").text(no);
+                        tr.find("td:eq(1)").text(name);
+                        tr.find("td:eq(2)").text(kor);
+                        tr.find("td:eq(3)").text(eng);
+                        tr.find("td:eq(4)").text(math);
+                        tr.find("td:eq(5)").text(total);
+                        tr.find("td:eq(6)").text(avg.toFixed(1));
+
+                        // 등수는 일단 0으로 설정
+                        tr.find("td:eq(7)").text(0);
+
+
+                        // 수정 모드 종료
+                        updateId = null;
+
+
+                        // 버튼 원래대로 변경
+                        $("#saveBtn").text("저장");
+
+
+                        // 입력창 초기화
+                        $("#no").val("");
+                        $("#name").val("");
+                        $("#kor").val("");
+                        $("#eng").val("");
+                        $("#math").val("");
+
+
+                        alert("수정되었습니다.");
+                    }
+
+                    return;
+                }
+
+
+                // ============================================
+                // 신규 저장
+                // ============================================
+
+                // 같은 번호가 있는지 확인
+                var duplicate = false;
+
+                $("#tbody tr").each(function(){
+
+                    var currentId = $(this).attr("id");
+
+                    if(currentId == no){
+                        duplicate = true;
+                    }
+
+                });
+
+
+                if(duplicate){
+                    alert("이미 존재하는 번호입니다.");
+                    $("#no").focus();
+                    return;
+                }
+
+
+                // ============================================
+                // 학생 데이터 행 생성
+                // ============================================
+
+                var html = "";
+
+                html += "<tr id='" + no + "'>";
+
+                html += "<td>" + no + "</td>";
+                html += "<td>" + name + "</td>";
+                html += "<td>" + kor + "</td>";
+                html += "<td>" + eng + "</td>";
+                html += "<td>" + math + "</td>";
+                html += "<td>" + total + "</td>";
+                html += "<td>" + avg.toFixed(1) + "</td>";
+                html += "<td>0</td>";
+
+                html += "<td>";
+                html += "<button type='button' class='updateBtn'>수정</button> ";
+                html += "<button type='button' class='deleteBtn'>삭제</button>";
+                html += "</td>";
+
+                html += "</tr>";
+
+
+                // tbody에 추가
+                $("#tbody").append(html);
+
+
+                // 입력창 초기화
+                $("#no").val("");
+                $("#name").val("");
+                $("#kor").val("");
+                $("#eng").val("");
+                $("#math").val("");
+
+
+                alert("저장되었습니다.");
+
+            }); // saveBtn
+
+
+            // ============================================
+            // 삭제 버튼
+            // ============================================
+
+            $(document).on("click",".deleteBtn",function(){
+
+                console.log(
+                    "tr id : ",
+                    $(this).parent().parent().attr("id")
+                );
+
+
+                // 현재 버튼이 속한 tr의 id
+                var id = $(this).parent().parent().attr("id");
+
+
+                if(confirm("성적을 삭제하시겠습니까?")){
+
+                    $("#" + id).remove();
+
+                    alert("삭제되었습니다.");
+                }
+
+            }); // deleteBtn
+
+
+            // ============================================
+            // 수정 버튼
+            // ============================================
+
+            $(document).on("click",".updateBtn",function(){
+
+                // 현재 버튼이 속한 tr
+                var tr = $(this).parent().parent();
+
+
+                // tr의 id
+                updateId = tr.attr("id");
+
+
+                console.log("수정할 학생 번호 : " + updateId);
+
+
+                // ============================================
+                // 테이블 데이터를 입력창으로 가져오기
+                // ============================================
+
+                var no = tr.find("td:eq(0)").text();
+                var name = tr.find("td:eq(1)").text();
+                var kor = tr.find("td:eq(2)").text();
+                var eng = tr.find("td:eq(3)").text();
+                var math = tr.find("td:eq(4)").text();
+
+
+                $("#no").val(no);
+                $("#name").val(name);
+                $("#kor").val(kor);
+                $("#eng").val(eng);
+                $("#math").val(math);
+
+
+                // 저장 버튼을 수정 버튼으로 변경
+                $("#saveBtn").text("수정");
+
+
+                // 취소 버튼 보이기
+                $("#cancelBtn").show();
+
+
+                // 입력창으로 이동
+                $("#no").focus();
+
+            }); // updateBtn
+
+
+            // ============================================
+            // 수정 취소 버튼
+            // ============================================
+
+            $("#cancelBtn").click(function(){
+
+                if(confirm("수정을 취소하시겠습니까?")){
+
+                    // 수정 모드 해제
+                    updateId = null;
+
+
+                    // 입력창 초기화
+                    $("#no").val("");
+                    $("#name").val("");
+                    $("#kor").val("");
+                    $("#eng").val("");
+                    $("#math").val("");
+
+
+                    // 저장 버튼 원래대로
+                    $("#saveBtn").text("저장");
+
+
+                    // 취소 버튼 숨기기
+                    $("#cancelBtn").hide();
+
+
+                    alert("수정이 취소되었습니다.");
+                }
+
+            }); // cancelBtn
+
+
+        }); // 제이쿼리
+
+    </script>
+</head>
+
+
+<body>
+
+    <div>
+
+        <h2>학생성적입력</h2>
+
+        <input type="text" name="no" id="no" placeholder="번호입력"><br>
+
+        <input type="text" name="name" id="name" placeholder="이름입력"><br>
+
+        <input type="text" name="kor" id="kor" placeholder="국어입력"><br>
+
+        <input type="text" name="eng" id="eng" placeholder="영어입력"><br>
+
+        <input type="text" name="math" id="math" placeholder="수학입력"><br>
+
+        <br>
+
+        <button type="button" id="saveBtn">저장</button>
+
+        <button type="button" id="cancelBtn" style="display:none;">
+            취소
+        </button>
+
+        <button type="button" id="conBtn">
+            가져오기
+        </button>
+
+
+        <h2>학생성적리스트</h2>
+
+
+        <table>
+
+            <colgroup>
+                <col width="10%">
+                <col width="15%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                <col width="15%">
+            </colgroup>
+
+
+            <thead>
+
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>국어</th>
+                    <th>영어</th>
+                    <th>수학</th>
+                    <th>합계</th>
+                    <th>평균</th>
+                    <th>등수</th>
+                    <th>비고</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody id="tbody">
+
+                <tr id="1">
+
+                    <td>1</td>
+                    <td>홍길동</td>
+                    <td>100</td>
+                    <td>100</td>
+                    <td>100</td>
+                    <td>300</td>
+                    <td>100.0</td>
+                    <td>0</td>
+
+                    <td>
+                        <button type="button" class="updateBtn">
+                            수정
+                        </button>
+
+                        <button type="button" class="deleteBtn">
+                            삭제
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr id="2">
+
+                    <td>2</td>
+                    <td>유관순</td>
+                    <td>100</td>
+                    <td>100</td>
+                    <td>100</td>
+                    <td>300</td>
+                    <td>100.0</td>
+                    <td>0</td>
+
+                    <td>
+                        <button type="button" class="updateBtn">
+                            수정
+                        </button>
+
+                        <button type="button" class="deleteBtn">
+                            삭제
+                        </button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+</html>
