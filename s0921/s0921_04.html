@@ -24,7 +24,7 @@
             $(document).on("click",".deleteBtn",function(){
                 console.log("tr id : ",$(this).parent().parent().attr("id"));
                 id = $(this).parent().parent().attr("id");
-
+                
                 if(confirm("성적을 삭제하시겠습니까?")){
                     $("#"+id).remove();
                 }
@@ -103,7 +103,7 @@
                 var tr = $(this).parent().parent();
 
                 id = tr.attr("id"); //전역변수에 저장
-
+                
                 no = tr.find("td:eq(0)").text();
                 name = tr.find("td:eq(1)").text();
                 kor = tr.find("td:eq(2)").text();
@@ -180,7 +180,7 @@
         <br>
         <button type="button" id="saveBtn">저장</button>
         <button type="button" id="conBtn">가져오기</button>
-
+        
         <h2>학생성적리스트</h2>
         <table>
             <colgroup>
@@ -234,10 +234,10 @@
                     <button type="button" class="deleteBtn">삭제</button>
                 </td>
             </tr>
-
+            
             </tbody>
         </table>
     </div>
-
+    
 </body>
 </html>

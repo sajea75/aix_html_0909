@@ -466,7 +466,7 @@
         <script>
             $(function(){
                 $.ajax({
-                    url:"https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?serviceKey=O7aGA1KJJmgz1lr6XaZntMwTHuHZpV3dxn%2BdH2qtlHFXJuf2e0oUkwzf%2B996JGrGhnG1%2Fj9wWlXyVTbqR54SYQ%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&_type=json",
+                    url:"https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?serviceKey=918RE13GA7OY7ZEmUzApgbOeAcQoZ%2FaHsXWcqPAKQ9YNNPj83KOstRMRIUrCFIAcm9qj2R6b7NFZjp%2FYsYzJLg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&_type=json",
                     type:"get",
                     data:"",
                     dataType:"json",
@@ -475,13 +475,40 @@
                         console.log(data.response.body.items.item);
                         var arr = data.response.body.items.item;
                         var txthtml = ``;
-                        for(var i=0,i<10i++){}
-                        $(".news-list").html(data);
+                        for(var i=0;i<10;i++){
+                            txthtml += `
+                            <a href="#" class="news-item">
+                                <div class="number">${arr[i].galContentId}</div>
+                                <div class="thumb">
+                                    <img
+                                        src="${arr[i].galWebImageUrl}"
+                                        alt="리조트 풍경"
+                                    >
+                                </div>
+                                <div class="news-content">
+                                    <h3>
+                                       ${arr[i].galTitle}
+                                    </h3>
+                                    <p>
+                                        ${arr[i].galSearchKeyword}
+                                    </p>
+                                    <span class="date">
+                                        ${arr[i].galPhotographyMonth}
+                                    </span>
+                                </div>
+                                <div class="category">
+                                    ${arr[i].galPhotographer}
+                                </div>
+                            </a>
+                            `;
+                        }
+                        $(".news-list").html(txthtml);
                     },
                     fail:function(){
-                        alert("실패")
+                        alert("실패");
                     }
                 });
+               
             });//제이쿼리
 
         </script>
